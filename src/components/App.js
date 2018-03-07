@@ -1,4 +1,5 @@
 import React from 'react';
+import OverlayLoader from 'react-overlay-loading/lib/OverlayLoader';
 import Product from './Product.js';
 
 const DATA_URL =
@@ -13,35 +14,46 @@ class App extends React.Component {
 
 		this.state = {
 			products: [],
-			count: 1
+			count: 1,
+			loading: true
 		};
 	}
 
 	render() {
 		return (
-			<div>
-				{this.state.products.map(product => (
-					<Product key={product.id} {...product} />
-				))}
-				<button
-					onClick={() => {
-						let count = this.state.count + 1;
-						this.setState(() => ({ count }));
-						this.fetchData(count).then(newProducts => {
-							let products = [...this.state.products, ...newProducts];
-							this.setState(() => ({ products }));
-						});
-					}}
-				>
-					Load More
-				</button>
-			</div>
+			<OverlayLoader
+				color={'red'} // default is white
+				loader="ScaleLoader" // check below for more loaders
+				text="Loading... Please wait!"
+				active={this.state.loading}
+				backgroundColor={'black'} // default is black
+				opacity=".4" // default is .9
+			>
+				<div>
+					{this.state.products.map(product => (
+						<Product key={product.id} {...product} />
+					))}
+					<button
+						onClick={() => {
+							this.setState({ loading: true });
+
+							let count = this.state.count + 1;
+							this.fetchData(count).then(newProducts => {
+								let products = [...this.state.products, ...newProducts];
+								this.setState(() => ({ products, count, loading: false }));
+							});
+						}}
+					>
+						Load More
+					</button>
+				</div>
+			</OverlayLoader>
 		);
 	}
 
 	componentDidMount() {
 		this.fetchData(this.state.count).then(products =>
-			this.setState(() => ({ products }))
+			this.setState(() => ({ products, loading: false }))
 		);
 	}
 
