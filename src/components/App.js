@@ -1,4 +1,5 @@
 import React from 'react';
+import Product from './Product.js';
 
 const DATA_URL =
   'https://www.wooplr.com/rest/v2/advancedlookup/productsnew/top?pageNumber=1&count=20&fromCache=true';
@@ -7,16 +8,17 @@ const BASE_IMAGE_URL =
 const BASE_WEBLINK_URL = 'https://www.wooplr.com';
 
 class App extends React.Component {
-  state = {
-    products: []
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      products: []
+    };
+  }
 
   render() {
     return (
-      <header>
-        <h1>Boom Boom</h1>
-        {this.state.products.length}
-      </header>
+      <div>{this.state.products.map((product) => <Product key={product.id} {...product} />)}</div>
     );
   }
 
