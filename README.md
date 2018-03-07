@@ -3,8 +3,8 @@
 ## Tasks
 
 * [x] Initial Setup
-* [ ] Breakdown UI into components
-* [ ] Create top level component that makes API call and gets data
+* [x] Breakdown UI into components
+* [x] Create top level component that makes API call and gets data
 * [ ] Create Product component
 * [ ] Change images on hover
 * [ ] Lazy load images
