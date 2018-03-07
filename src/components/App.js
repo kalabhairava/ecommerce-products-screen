@@ -17,6 +17,10 @@ class App extends React.Component {
 			count: 1,
 			loading: true
 		};
+
+		this.fetchData = this.fetchData.bind(this);
+		this.updateProducts = this.updateProducts.bind(this);
+		this.handleScroll = this.handleScroll.bind(this);
 	}
 
 	render() {
@@ -24,7 +28,7 @@ class App extends React.Component {
 			<OverlayLoader
 				color={'red'} // default is white
 				loader="ScaleLoader" // check below for more loaders
-				text="Loading... Please wait!"
+				text="Loading more products... Please wait!"
 				active={this.state.loading}
 				backgroundColor={'black'} // default is black
 				opacity=".4" // default is .9
@@ -33,19 +37,6 @@ class App extends React.Component {
 					{this.state.products.map(product => (
 						<Product key={product.id} {...product} />
 					))}
-					<button
-						onClick={() => {
-							this.setState({ loading: true });
-
-							let count = this.state.count + 1;
-							this.fetchData(count).then(newProducts => {
-								let products = [...this.state.products, ...newProducts];
-								this.setState(() => ({ products, count, loading: false }));
-							});
-						}}
-					>
-						Load More
-					</button>
 				</div>
 			</OverlayLoader>
 		);
@@ -55,6 +46,13 @@ class App extends React.Component {
 		this.fetchData(this.state.count).then(products =>
 			this.setState(() => ({ products, loading: false }))
 		);
+
+		window.addEventListener('scroll', this.handleScroll);
+		this.documentObj = document.documentElement;
+	}
+
+	componentWillUnmount() {
+		window.removeEventListener('scroll', this.handleScroll);
 	}
 
 	fetchData(page) {
@@ -121,6 +119,25 @@ class App extends React.Component {
 						})
 					)
 			);
+	}
+
+	updateProducts() {
+		this.setState({ loading: true });
+
+		let count = this.state.count + 1;
+		this.fetchData(count).then(newProducts => {
+			let products = [...this.state.products, ...newProducts];
+			this.setState(() => ({ products, count, loading: false }));
+		});
+	}
+
+	handleScroll() {
+		var offset = this.documentObj.scrollTop + window.innerHeight;
+		var height = this.documentObj.offsetHeight;
+
+		if (offset >= height) {
+			this.updateProducts();
+		}
 	}
 }
 
