@@ -32,6 +32,9 @@ class Images extends React.Component {
     let i = 1;
 
     if (this.props.images.length > 1) {
+      this.changeImageSource(i++); // Transition to the first image immediately
+
+      // transition images every second, until the user moves out of the image
       this.intervalId = setInterval(() => {
         this.changeImageSource(i++);
       }, 1000);

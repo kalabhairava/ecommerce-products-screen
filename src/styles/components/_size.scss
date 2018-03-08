@@ -1,0 +1,33 @@
+.size {
+  font-size: $normal;
+  display: table;
+  table-layout: fixed;
+  border-spacing: $s-size;
+  border-collapse: separate;
+  width: 20%;
+}
+
+.size__item {
+  border: 2px solid black;
+  padding: $s-size;
+  display: table-cell;
+}
+
+.size__item:focus,
+.size__item:hover {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px;
+  background-color: black;
+  color: white;
+}
+
+.size__item--disabled {
+  opacity: 0.6;
+  border-color: lighten(black, 50%);
+}
+
+.size__item--disabled:focus,
+.size__item--disabled:hover {
+  box-shadow: none;
+  background-color: inherit;
+  color: inherit;
+}

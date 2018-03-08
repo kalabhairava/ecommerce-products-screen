@@ -1,0 +1,15 @@
+.price {
+  font-size: $normal;
+}
+
+.price__retail {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.price__sales {
+}
+
+.price__savings {
+  color: rgb(32, 192, 32);
+}

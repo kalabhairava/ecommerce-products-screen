@@ -6,10 +6,12 @@ function Price(props) {
   const discountPercentage = Math.floor(discountAmount / retailPrice * 100);
 
   return (
-    <div>
-      <span>{retailPrice}</span>
-      {' ' + salesPrice}
-      <span>{`(-${discountPercentage}%), You save ₹${discountAmount}`}</span>
+    <div className="price">
+      <span className="price__retail">₹{retailPrice}</span>
+      <span className="price__sales"> ₹{salesPrice}</span>
+      <span className="price__savings">
+        {` (-${discountPercentage}%), You save ₹${discountAmount}!`}
+      </span>
     </div>
   );
 }

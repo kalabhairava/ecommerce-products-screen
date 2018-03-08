@@ -1,7 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
 html {
   font-size: 10px;
 }
 
 body {
-  font-family: 'Consolas', 'monospace', Verdana, sans-serif;
+  font-family: 'Montserrat', 'monospace', Verdana, sans-serif;
+  font-size: $normal;
 }
