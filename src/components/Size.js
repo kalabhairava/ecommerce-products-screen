@@ -10,6 +10,7 @@ function Size(props) {
     <div className="size">
       {sizes.map((size) => (
         <span
+          key={size}
           className={
             availableSizes.includes(size) ? 'size__item' : 'size__item size__item--disabled'
           }

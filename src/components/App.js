@@ -15,7 +15,8 @@ class App extends React.Component {
     this.state = {
       products: [],
       count: 1,
-      loading: true
+      loading: true,
+      columns: 3
     };
 
     this.fetchData = this.fetchData.bind(this);
@@ -26,16 +27,32 @@ class App extends React.Component {
   render() {
     return (
       <OverlayLoader
-        color={'red'} // default is white
-        loader="ScaleLoader" // check below for more loaders
+        color={'white'}
+        loader="ScaleLoader"
         text="Loading more products... Please wait!"
         active={this.state.loading}
-        backgroundColor={'black'} // default is black
-        opacity=".4" // default is .9
+        backgroundColor={'black'}
+        opacity=".3"
       >
         <div className="page-title">Buy on my Wooplr Store!</div>
+        <div id="layoutOptions" className="layout-selector">
+          <button
+            onClick={() => this.setState({ columns: 3 })}
+            className={this.state.columns === 3 && 'active'}
+          >
+            3 Columns
+          </button>
+          <button
+            onClick={() => this.setState({ columns: 5 })}
+            className={this.state.columns === 5 && 'active'}
+          >
+            5 Columns
+          </button>
+        </div>
         <div className="row no-negative-margin">
-          {this.state.products.map((product) => <Product key={product.id} {...product} />)}
+          {this.state.products.map((product) => (
+            <Product key={product.id} {...product} columns={this.state.columns} />
+          ))}
         </div>
       </OverlayLoader>
     );

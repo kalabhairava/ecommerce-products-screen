@@ -8,3 +8,21 @@
   text-decoration: underline;
   margin-bottom: $l-size;
 }
+
+.layout-selector {
+  text-align: right;
+  margin-right: 1.4rem;
+}
+
+.layout-selector button {
+  background: white;
+  color: black;
+  border: 1px solid black;
+  margin: 1px;
+  padding: 5px 10px;
+}
+
+.active {
+  color: white !important;
+  background: black !important;
+}

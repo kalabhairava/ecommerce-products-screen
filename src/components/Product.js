@@ -6,6 +6,7 @@ import Stock from './Stock';
 import Color from './Color';
 import Category from './Category';
 import Images from './Images';
+import { width } from 'window-size';
 
 // TODO: make this a stateless functional component
 class Product extends React.Component {
@@ -25,7 +26,8 @@ class Product extends React.Component {
       category,
       subCategory,
       gender,
-      webLink
+      webLink,
+      columns
     } = this.props;
 
     const style = {
@@ -34,7 +36,7 @@ class Product extends React.Component {
     };
 
     return (
-      <div className="product">
+      <div className="product" style={applyWidth(columns)}>
         <Images images={image_pid} name={name} />
         <Describe name={name} gender={gender} description={description} webLink={webLink} />
         <Price retailPrice={retailPrice} salesPrice={salesPrice} discount={discount} />
@@ -48,5 +50,13 @@ class Product extends React.Component {
     );
   }
 }
+
+const applyWidth = (columns) => {
+  const width = columns === 3 ? '32%' : '18.7%';
+
+  return {
+    width
+  };
+};
 
 export default Product;
