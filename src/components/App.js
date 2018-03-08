@@ -16,7 +16,12 @@ class App extends React.Component {
       products: [],
       count: 1,
       loading: true,
-      columns: 3
+      columns: 3,
+      filters: {
+        gender: '',
+        size: '',
+        color: ''
+      }
     };
 
     this.fetchData = this.fetchData.bind(this);
@@ -24,13 +29,8 @@ class App extends React.Component {
     this.handleScroll = this.handleScroll.bind(this);
   }
 
-  updateColor = (event) => (this.filters.color = event.target.value);
-
-  filters = {
-    gender: '',
-    size: '',
-    color: ''
-  };
+  updateColor = (event) =>
+    this.setState({ filters: { ...this.state.filters, color: event.target.value } });
 
   render() {
     return (
@@ -46,32 +46,40 @@ class App extends React.Component {
         <div className="filter-bar">
           <div id="sizeFilter" className="button-group">
             <button
-              className={this.filters.size === 'S' ? 'active' : ''}
-              onClick={() => this.setState(() => ({ filters: { ...this.filters, size: 'S' } }))}
+              className={this.state.filters.size === 'S' ? 'active' : ''}
+              onClick={() =>
+                this.setState(() => ({ filters: { ...this.state.filters, size: 'S' } }))
+              }
             >
               S
             </button>
             <button
-              className={this.filters.size === 'M' ? 'active' : ''}
-              onClick={() => this.setState(() => ({ filters: { ...this.filters, size: 'M' } }))}
+              className={this.state.filters.size === 'M' ? 'active' : ''}
+              onClick={() =>
+                this.setState(() => ({ filters: { ...this.state.filters, size: 'M' } }))
+              }
             >
               M
             </button>
             <button
-              className={this.filters.size === 'L' ? 'active' : ''}
-              onClick={() => this.setState({ filters: { ...this.filters, size: 'L' } })}
+              className={this.state.filters.size === 'L' ? 'active' : ''}
+              onClick={() => this.setState({ filters: { ...this.state.filters, size: 'L' } })}
             >
               L
             </button>
             <button
-              className={this.filters.size === 'XL' ? 'active' : ''}
-              onClick={() => this.setState(() => ({ filters: { ...this.filters, size: 'XL' } }))}
+              className={this.state.filters.size === 'XL' ? 'active' : ''}
+              onClick={() =>
+                this.setState(() => ({ filters: { ...this.state.filters, size: 'XL' } }))
+              }
             >
               XL
             </button>
             <button
-              className={this.filters.size === 'XXL' ? 'active' : ''}
-              onClick={() => this.setState(() => ({ filters: { ...this.filters, size: 'XXL' } }))}
+              className={this.state.filters.size === 'XXL' ? 'active' : ''}
+              onClick={() =>
+                this.setState(() => ({ filters: { ...this.state.filters, size: 'XXL' } }))
+              }
             >
               XXL
             </button>
@@ -82,20 +90,22 @@ class App extends React.Component {
               name="color"
               className="color__input"
               type="text"
-              // value={this.filters.color}
+              value={this.state.filters.color}
               onChange={this.updateColor}
             />
           </div>
           <div id="genderFilter" className="gender-selector">
             <button
-              onClick={() => this.setState({ filters: { ...this.filters, gender: 'male' } })}
-              className={this.filters.gender === 'male' ? 'active' : ''}
+              onClick={() => this.setState({ filters: { ...this.state.filters, gender: 'male' } })}
+              className={this.state.filters.gender === 'male' ? 'active' : ''}
             >
               Male
             </button>
             <button
-              onClick={() => this.setState({ filters: { ...this.filters, gender: 'female' } })}
-              className={this.filters.gender === 'female' ? 'active' : ''}
+              onClick={() =>
+                this.setState({ filters: { ...this.state.filters, gender: 'female' } })
+              }
+              className={this.state.filters.gender === 'female' ? 'active' : ''}
             >
               Female
             </button>
