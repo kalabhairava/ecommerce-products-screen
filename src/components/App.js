@@ -30,18 +30,27 @@ class App extends React.Component {
 		this.handleScroll = this.handleScroll.bind(this);
 	}
 
-	updateColor = event =>
-		this.setState({
-			filters: { ...this.state.filters, color: event.target.value }
-		});
+	// updateColor = event =>
+	// 	this.setState({
+	// 		filters: { ...this.state.filters, color: event.target.value }
+	// 	});
 
 	updateGender = gender => {
 		console.log('update gender called');
-		let filteredProducts = this.filterByGender(gender);
+		let filteredProducts = this.filterByGender(this.state.products, gender);
 		this.setState({
 			filters: { ...this.state.filters, gender },
 			filteredProducts
 		});
+	};
+
+	updateSize = size => {
+		let filteredProducts = this.filterBySize(this.state.products, size);
+
+		this.setState(() => ({
+			filters: { ...this.state.filters, size },
+			filteredProducts
+		}));
 	};
 
 	render() {
@@ -59,77 +68,31 @@ class App extends React.Component {
 					<div id="sizeFilter" className="button-group">
 						<button
 							className={this.state.filters.size === 'S' ? 'active' : ''}
-							onClick={() => {
-								console.log('s clicked');
-								let filteredProducts = this.filterBySize(
-									this.state.filteredProducts,
-									'S'
-								);
-								this.setState(() => ({
-									filters: { ...this.state.filters, size: 'S' },
-									filteredProducts
-								}));
-							}}
+							onClick={() => this.updateSize('S')}
 						>
 							S
 						</button>
 						<button
 							className={this.state.filters.size === 'M' ? 'active' : ''}
-							onClick={() => {
-								let filteredProducts = this.filterBySize(
-									this.state.filteredProducts,
-									'M'
-								);
-								this.setState(() => ({
-									filters: { ...this.state.filters, size: 'M' },
-									filteredProducts
-								}));
-							}}
+							onClick={() => this.updateSize('M')}
 						>
 							M
 						</button>
 						<button
 							className={this.state.filters.size === 'L' ? 'active' : ''}
-							onClick={() => {
-								let filteredProducts = this.filterBySize(
-									this.state.filteredProducts,
-									'L'
-								);
-								this.setState(() => ({
-									filters: { ...this.state.filters, size: 'L' },
-									filteredProducts
-								}));
-							}}
+							onClick={() => this.updateSize('L')}
 						>
 							L
 						</button>
 						<button
 							className={this.state.filters.size === 'XL' ? 'active' : ''}
-							onClick={() => {
-								let filteredProducts = this.filterBySize(
-									this.state.filteredProducts,
-									'XL'
-								);
-								this.setState(() => ({
-									filters: { ...this.state.filters, size: 'XL' },
-									filteredProducts
-								}));
-							}}
+							onClick={() => this.updateSize('XL')}
 						>
 							XL
 						</button>
 						<button
 							className={this.state.filters.size === 'XXL' ? 'active' : ''}
-							onClick={() => {
-								let filteredProducts = this.filterBySize(
-									this.state.filteredProducts,
-									'XXL'
-								);
-								this.setState(() => ({
-									filters: { ...this.state.filters, size: 'XXL' },
-									filteredProducts
-								}));
-							}}
+							onClick={() => this.updateSize('XXL')}
 						>
 							XXL
 						</button>
@@ -305,13 +268,15 @@ class App extends React.Component {
 
 	filterBySize(products, size) {
 		console.log('filterbysize', products, size);
-		return products.filter(product => product.availableSizes.includes(size));
+		return size
+			? products.filter(product => product.availableSizes.includes(size))
+			: products;
 	}
 
 	filterByGender(products, gender) {
-		console.log('filterbygender', products, gender);
-
-		return products.filter(product => product.gender === gender);
+		return gender
+			? products.filter(product => product.gender === gender)
+			: products;
 	}
 }
 
