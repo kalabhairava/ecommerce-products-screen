@@ -5,13 +5,14 @@
 * [x] Initial Setup
 * [x] Breakdown UI into components
 * [x] Create top level component that makes API call and gets data
-* [ ] Create Product component
-* [ ] Change images on hover
-* [ ] Lazy load images
-* [ ] Add option for grid 3 in a row and 5 in a row
-* [ ] Append (on scroll?) next page result to the same page
+* [x] Create Product component
+* [x] Change images on hover
+* [x] Lazy load images
+* [x] Add option for grid 3 in a row and 5 in a row
+* [x] Append (on scroll?) next page result to the same page
 * [ ] Add filter using sizes and color
-* [ ] Style the app
+* [x] Style the app
+* [x] Make it responsive on mobile devices
 * [ ] Optimize for production
-* [ ] Deploy on Heroku
+* [x] Deploy on Heroku
 * [ ] Performace tests

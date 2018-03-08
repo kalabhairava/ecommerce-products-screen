@@ -6,7 +6,10 @@
   padding: $s-size;
   margin: 1.2rem 0.8rem;
   border: 1px solid black;
-  width: 32%;
+
+  @media (max-width: 576px) {
+    width: 100% !important;
+  }
 }
 
 .product__color-stock-row {
