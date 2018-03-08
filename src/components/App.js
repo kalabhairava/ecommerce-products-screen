@@ -16,18 +16,21 @@ class App extends React.Component {
       products: [],
       count: 1,
       loading: true,
-      columns: 3,
-      filters: {
-        gender: 'female',
-        size: '',
-        color: ''
-      }
+      columns: 3
     };
 
     this.fetchData = this.fetchData.bind(this);
     this.updateProducts = this.updateProducts.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
   }
+
+  updateColor = (event) => (this.filters.color = event.target.value);
+
+  filters = {
+    gender: '',
+    size: '',
+    color: ''
+  };
 
   render() {
     return (
@@ -42,44 +45,57 @@ class App extends React.Component {
         <div className="page-title">Buy on my Wooplr Store!</div>
         <div className="filter-bar">
           <div id="sizeFilter" className="button-group">
-            <button className="" onClick={() => {}}>
+            <button
+              className={this.filters.size === 'S' ? 'active' : ''}
+              onClick={() => this.setState(() => ({ filters: { ...this.filters, size: 'S' } }))}
+            >
               S
             </button>
-            <button className="" onClick={() => {}}>
+            <button
+              className={this.filters.size === 'M' ? 'active' : ''}
+              onClick={() => this.setState(() => ({ filters: { ...this.filters, size: 'M' } }))}
+            >
               M
             </button>
-            <button className="" onClick={() => {}}>
+            <button
+              className={this.filters.size === 'L' ? 'active' : ''}
+              onClick={() => this.setState({ filters: { ...this.filters, size: 'L' } })}
+            >
               L
             </button>
-            <button className="" onClick={() => {}}>
+            <button
+              className={this.filters.size === 'XL' ? 'active' : ''}
+              onClick={() => this.setState(() => ({ filters: { ...this.filters, size: 'XL' } }))}
+            >
               XL
             </button>
-            <button className="" onClick={() => {}}>
+            <button
+              className={this.filters.size === 'XXL' ? 'active' : ''}
+              onClick={() => this.setState(() => ({ filters: { ...this.filters, size: 'XXL' } }))}
+            >
               XXL
             </button>
           </div>
-          <div id="colorFilter" className="color-dropdown">
-            <select>
-              <option>Red</option>
-              <option>Red</option>
-              <option>Red</option>
-              <option>Red</option>
-              <option>Red</option>
-              <option>Red</option>
-              <option>Red</option>
-              <option>Red</option>
-            </select>
+          <div id="colorFilter" className="color">
+            <label htmlFor="color">Color: </label>
+            <input
+              name="color"
+              className="color__input"
+              type="text"
+              // value={this.filters.color}
+              onChange={this.updateColor}
+            />
           </div>
           <div id="genderFilter" className="gender-selector">
             <button
-              onClick={() => this.setState({ filters: { ...filters, gender: 'male' } })}
-              className={this.state.filters.gender === 'male' && 'active'}
+              onClick={() => this.setState({ filters: { ...this.filters, gender: 'male' } })}
+              className={this.filters.gender === 'male' ? 'active' : ''}
             >
               Male
             </button>
             <button
-              onClick={() => this.setState({ filters: { ...filters, gender: 'female' } })}
-              className={this.state.filters.gender === 'female' && 'active'}
+              onClick={() => this.setState({ filters: { ...this.filters, gender: 'female' } })}
+              className={this.filters.gender === 'female' ? 'active' : ''}
             >
               Female
             </button>
@@ -87,13 +103,13 @@ class App extends React.Component {
           <div id="layoutOptions" className="layout-selector">
             <button
               onClick={() => this.setState({ columns: 3 })}
-              className={this.state.columns === 3 && 'active'}
+              className={this.state.columns === 3 ? 'active' : ''}
             >
               3 Columns
             </button>
             <button
               onClick={() => this.setState({ columns: 5 })}
-              className={this.state.columns === 5 && 'active'}
+              className={this.state.columns === 5 ? 'active' : ''}
             >
               5 Columns
             </button>

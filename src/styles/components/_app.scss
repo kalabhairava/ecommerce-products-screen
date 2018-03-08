@@ -27,11 +27,19 @@
 .filter-bar {
   display: flex;
   justify-content: space-between;
+  margin-bottom: $l-size;
 }
 
-.color-dropdown {
-  background: white;
-  color: black;
-  margin: 1px;
-  padding: 5px 10px;
+.color {
+  font-size: $m-size;
+}
+
+.color__input {
+  margin-left: 5px;
+  padding: 5px;
+  border: 1px solid black;
+}
+
+.color__input:focus {
+  outline: none;
 }
