@@ -33,6 +33,7 @@ class App extends React.Component {
         backgroundColor={'black'} // default is black
         opacity=".4" // default is .9
       >
+        <div className="page-title">Buy on my Wooplr Store!</div>
         <div className="row no-negative-margin">
           {this.state.products.map((product) => <Product key={product.id} {...product} />)}
         </div>

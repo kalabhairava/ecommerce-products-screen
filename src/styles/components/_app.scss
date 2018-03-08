@@ -1,3 +1,10 @@
 .no-negative-margin {
   margin: 0;
 }
+
+.page-title {
+  font-size: $xl-size;
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: $l-size;
+}
