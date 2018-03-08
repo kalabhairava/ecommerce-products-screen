@@ -7,6 +7,10 @@
   text-align: center;
 }
 
+.description__title a {
+  color: inherit;
+}
+
 .description__title--italic--muted {
   font-style: italic;
   font-size: 1rem;

@@ -1,4 +1,5 @@
 .stock {
+  float: right;
 }
 
 .stock__text {
@@ -6,6 +7,7 @@
 
 .stock__value {
   font-weight: bold;
+  font-size: $m-size;
 }
 
 .stock__not-available {

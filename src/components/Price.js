@@ -10,7 +10,7 @@ function Price(props) {
       <span className="price__retail">₹{retailPrice}</span>
       <span className="price__sales"> ₹{salesPrice}</span>
       <span className="price__savings">
-        {` (-${discountPercentage}%), You save ₹${discountAmount}!`}
+        {` (-${discountPercentage}%), You save ₹${discountAmount}`}
       </span>
     </div>
   );

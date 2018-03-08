@@ -1,15 +1,12 @@
 import React from 'react';
 
 function Category(props) {
-  const { webLink, category, subCategory } = props;
+  const { category, subCategory } = props;
 
   return (
-    <div>
-      <a className="link" href={webLink}>
-        Link to this product
-      </a>
-      {/* <div>Category: {category}</div>
-      <div>Sub Category: {subCategory}</div> */}
+    <div className="category">
+      <div className="category__text">Category</div>
+      <div className="category__value">{`${subCategory}, under ${category}.`}</div>
     </div>
   );
 }

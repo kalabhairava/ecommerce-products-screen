@@ -1,12 +1,10 @@
-.link {
-  color: $warm-blue;
+.category {
+  width: 80%;
+  margin: auto;
+  text-align: center;
 }
 
-.link:hover,
-.link:focus {
+.category__value {
   font-weight: bold;
-}
-
-.link:visited {
-  color: $warm-blue;
+  font-size: $m-size;
 }

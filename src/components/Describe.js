@@ -1,11 +1,11 @@
 import React from 'react';
 
 function Describe(props) {
-  const { name, gender, description } = props;
+  const { name, gender, description, webLink } = props;
   return (
     <div className="description">
       <div className="description__title">
-        {name}
+        <a href={webLink}>{name}</a>
         <span className="description__title--italic--muted"> for {gender}</span>
       </div>
       <div className="description__subtitle">{description}</div>
