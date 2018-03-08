@@ -1,51 +1,48 @@
 import React from 'react';
 
 class Images extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			currentImgSrc: this.props.images[0]
-		};
+    this.state = {
+      currentImgSrc: this.props.images[0]
+    };
 
-		this.startImageTransitions = this.startImageTransitions.bind(this);
-		this.stopImageTransitions = this.stopImageTransitions.bind(this);
-	}
+    this.startImageTransitions = this.startImageTransitions.bind(this);
+    this.stopImageTransitions = this.stopImageTransitions.bind(this);
+  }
 
-	render() {
-		const { name } = this.props;
+  render() {
+    const { name } = this.props;
 
-		return (
-			<img
-				src={this.state.currentImgSrc}
-				alt={name}
-				onMouseOver={this.startImageTransitions}
-				onMouseOut={this.stopImageTransitions}
-			/>
-		);
-	}
+    return (
+      <img
+        src={this.state.currentImgSrc}
+        alt={name}
+        onMouseOver={this.startImageTransitions}
+        onMouseOut={this.stopImageTransitions}
+      />
+    );
+  }
 
-	startImageTransitions() {
-		console.log('mouse enter');
-		// let i = 0,
-		// 	length = this.props.images.length;
+  startImageTransitions() {
+    console.log('mouse enter');
+    let i = 0;
+    this.intervalId = setInterval(() => {
+      this.changeImageSource(i++);
+    }, 1500);
+  }
 
-		// while (i < length) {
-		// 	this.changeImageSource(this.props.images[i]);
-		// 	if (++i === length) {
-		// 		i = 0;
-		// 	}
-		// }
-	}
+  changeImageSource(i) {
+    let index = i % this.props.images.length;
+    console.log('new source', i, index, this.props.images[index]);
+    this.setState(() => ({ currentImgSrc: this.props.images[index] }));
+  }
 
-	changeImageSource(newSource) {
-		console.log(newSource);
-		this.setState(() => ({ currentImgSrc: newSource }));
-	}
-
-	stopImageTransitions() {
-		console.log('mouseleave');
-	}
+  stopImageTransitions() {
+    console.log('mouseleave');
+    clearInterval(this.intervalId);
+  }
 }
 
 export default Images;
