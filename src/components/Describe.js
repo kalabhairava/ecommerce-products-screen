@@ -6,7 +6,7 @@ function Describe(props) {
     <div className="description">
       <div className="description__title">
         <a href={webLink}>{name}</a>
-        <span className="description__title--italic--muted"> for {gender}</span>
+        {/* <span className="description__title--italic--muted"> for {gender}</span> */}
       </div>
       <div className="description__subtitle">{description}</div>
     </div>

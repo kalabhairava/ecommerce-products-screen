@@ -8,3 +8,26 @@ body {
   font-family: 'Montserrat', 'monospace', Verdana, sans-serif;
   font-size: $normal;
 }
+
+button {
+  background: white;
+  color: black;
+  border: 1px solid black;
+  margin: 1px;
+  padding: 5px 10px;
+}
+
+button:focus,
+button:hover {
+  outline: none;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+select {
+  margin: 1px;
+  padding: 5px 16px;
+  background-color: black;
+  color: white;
+}

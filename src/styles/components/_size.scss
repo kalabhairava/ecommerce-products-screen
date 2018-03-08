@@ -14,14 +14,6 @@
   display: table-cell;
 }
 
-.size__item:focus,
-.size__item:hover {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px;
-  background-color: black;
-  color: white;
-  cursor: pointer;
-}
-
 .size__item--disabled {
   opacity: 0.6;
   border-color: lighten(black, 50%);
