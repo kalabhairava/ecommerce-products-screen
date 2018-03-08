@@ -5,9 +5,11 @@ function Category(props) {
 
   return (
     <div>
-      <a href={webLink}>Link to this product</a>
-      <div>Category: {category}</div>
-      <div>Sub Category: {subCategory}</div>
+      <a className="link" href={webLink}>
+        Link to this product
+      </a>
+      {/* <div>Category: {category}</div>
+      <div>Sub Category: {subCategory}</div> */}
     </div>
   );
 }

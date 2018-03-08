@@ -1,0 +1,13 @@
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: $s-size;
+  margin: 1.2rem 0.8rem;
+  border: 1px solid black;
+  width: 32%;
+}
+
+.product__color-stock-row {
+}

@@ -2,17 +2,18 @@
 }
 
 .description__title {
-  font-size: $m-size;
+  font-size: 1.8rem;
   font-weight: 600;
+  text-align: center;
 }
 
 .description__title--italic--muted {
   font-style: italic;
-  font-size: $s-size;
+  font-size: 1rem;
   font-weight: normal;
   opacity: 0.75;
 }
 
 .description__subtitle {
-  font-size: $normal;
+  font-size: $s-size;
 }

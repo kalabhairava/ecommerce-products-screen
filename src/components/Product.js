@@ -34,13 +34,15 @@ class Product extends React.Component {
     };
 
     return (
-      <div style={style}>
+      <div className="product">
         <Images images={image_pid} name={name} />
         <Describe name={name} gender={gender} description={description} />
         <Price retailPrice={retailPrice} salesPrice={salesPrice} discount={discount} />
         <Size sizes={size} availableSizes={availableSizes} />
-        <Color color={color} />
-        <Stock stock={stock} available={available} />
+        <div className="row product__color-stock-row">
+          <Color color={color} className="col-xs-6" />
+          <Stock stock={stock} available={available} className="col-xs-6" />
+        </div>
         <Category webLink={webLink} category={category} subCategory={subCategory} />
       </div>
     );

@@ -1,0 +1,12 @@
+.link {
+  color: $warm-blue;
+}
+
+.link:hover,
+.link:focus {
+  font-weight: bold;
+}
+
+.link:visited {
+  color: $warm-blue;
+}
