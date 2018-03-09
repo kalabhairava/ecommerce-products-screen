@@ -17,6 +17,7 @@ class App extends React.Component {
 			filteredProducts: [],
 			count: 1,
 			loading: true,
+			hasError: false,
 			columns: 3,
 			filters: {
 				gender: '',
@@ -139,6 +140,18 @@ class App extends React.Component {
 				</div>
 
 				<div className="row no-negative-margin">
+					{this.state.hasError ? (
+						<div className="error">
+							<p>
+								Unexpected error while fetching data. Please try again later
+							</p>
+							<p>
+								Note to developer: No response or response is an empty array
+							</p>
+						</div>
+					) : (
+						<div />
+					)}
 					{this.state.filteredProducts.map(product => (
 						<Product
 							key={product.id}
@@ -152,13 +165,16 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		this.fetchData(this.state.count).then(products =>
+		this.fetchData(this.state.count).then((products = []) => {
+			let hasError = products.length === 0;
+
 			this.setState(() => ({
 				products,
 				filteredProducts: products,
-				loading: false
-			}))
-		);
+				loading: false,
+				hasError
+			}));
+		});
 
 		window.addEventListener('scroll', this.handleScroll);
 		this.documentObj = document.documentElement;
