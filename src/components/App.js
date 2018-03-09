@@ -150,15 +150,14 @@ class App extends React.Component {
 							</p>
 						</div>
 					) : (
-						<div />
+						this.state.filteredProducts.map(product => (
+							<Product
+								key={product.id}
+								{...product}
+								columns={this.state.columns}
+							/>
+						))
 					)}
-					{this.state.filteredProducts.map(product => (
-						<Product
-							key={product.id}
-							{...product}
-							columns={this.state.columns}
-						/>
-					))}
 				</div>
 			</OverlayLoader>
 		);
